@@ -1,0 +1,13 @@
+SourceDir = getDirectory("Choose source directory"); 
+FolderList = getFileList(SourceDir); 
+stack1=SourceDir+FolderList[0]+File.separator; 
+stack2=SourceDir+FolderList[1]+File.separator; 
+stack3=SourceDir+FolderList[2]+File.separator; 
+run("Image Sequence...", "open=&stack1");
+rename("RFP");
+run("Subtract Background...", "rolling=50 stack");
+run("Image Sequence...", "open=&stack2");
+rename("TRANS");
+run("Image Sequence...", "open=&stack3");
+rename("YFP");
+run("Subtract Background...", "rolling=50 stack");
